@@ -1,0 +1,23 @@
+{% extends 'base.html' %} 
+
+{% block title %} Последние обновления на сайте {% endblock %} 
+{% block header %}Последние обновления на сайте{% endblock %}
+{% block content %}
+  <!-- класс py-5 создает отступы сверху и снизу блока -->
+  <div class="container py-5">
+    {% for post in page_obj %}
+      <ul>
+        <li>
+          Автор: {{ post.author.get_full_name }}
+        </li>
+        <li>
+          Дата публикации: {{ post.pub_date|date:"d E Y" }}
+        </li>
+      </ul>
+      <p>{{ post.text|linebreaks }}</p>
+
+    {% endfor %}
+
+    {% include 'posts/includes/paginator.html' %}
+  </div>
+{% endblock %}
