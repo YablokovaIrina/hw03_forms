@@ -67,7 +67,7 @@ def post_create(request):
         post.save()
         return redirect('posts:profile', username=post.author)
     contex = {
-        'form':form,
+        'form': form,
     }
     return render(request, 'posts/create_post.html', contex)
 
