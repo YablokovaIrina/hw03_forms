@@ -10,7 +10,7 @@
     {% for post in posts %}
       <ul>
         <li>
-          Автор: {{ post.author.get_full_name }}
+          Автор: <a href="{% url 'posts:profile' user.username %}">{{ post.author.get_full_name }}</a>
         </li>
         <li>
           Дата публикации: {{ post.pub_date|date:"d E Y" }}
@@ -18,6 +18,7 @@
       </ul>
       <article>
         <p>{{ post.text|linebreaks }}</p>
+        <a href="{% url 'posts:post_detail' post.pk %}"> Подробная информация </a>
         {% if not forloop.last %}
           <hr />
         {% endif %} 
