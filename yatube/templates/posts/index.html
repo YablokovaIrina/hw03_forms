@@ -15,12 +15,12 @@
       </ul>
       <p>{{ post.text|linebreaks }}</p>
       <p><a href="{% url 'posts:post_detail' post.pk %}"> Подробная информация </a></p>
-        {% if post.group %}
-            <p><a href="{% url 'posts:group_list' post.group.slug %}"> Все записи группы </a></p>
-        {% endif %}
-        {% if not forloop.last %}
-            <hr>
-        {% endif %}
+      {% if post.group %}
+        <p><a href="{% url 'posts:group_list' post.group.slug %}"> #{{ post.group }} </a></p> 
+      {% endif %}
+      {% if not forloop.last %}
+        <hr>
+      {% endif %}
     {% endfor %}
 
     {% include 'posts/includes/paginator.html' %}
